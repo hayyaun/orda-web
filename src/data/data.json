@@ -1,0 +1,376 @@
+[
+  {
+    "id": "pat-info",
+    "name": "Patient's information",
+    "page": true,
+    "options": [
+      {
+        "id": "pat-name",
+        "name": "Patient Name",
+        "desc": "",
+        "type": "string"
+      },
+      "pat-gender",
+      {
+        "id": "pat-age",
+        "name": "Patient Age",
+        "desc": "",
+        "type": "number"
+      }
+    ]
+  },
+  {
+    "id": "pat-gender",
+    "name": "Patient's gender",
+    "type": "enum",
+    "options": [
+      {
+        "id": "pat-male",
+        "name": "Male",
+        "desc": "",
+        "type": "boolean"
+      },
+      {
+        "id": "pat-female",
+        "name": "Female",
+        "desc": "",
+        "type": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "pat-his-cli-fin",
+    "name": "Patient history & clinical finding",
+    "page": true,
+    "options": [
+      {
+        "id": "fever-illness",
+        "name": "Fever and Illness",
+        "desc": "",
+        "type": "boolean"
+      },
+      {
+        "id": "dental-prob",
+        "name": "Dental Problem",
+        "desc": "",
+        "type": "boolean"
+      },
+      {
+        "id": "recent-gingival",
+        "name": "Recent gingival or periodontal problem",
+        "desc": "",
+        "type": "boolean"
+      },
+      {
+        "id": "history-of-surgery",
+        "name": "History of surgery or trauma",
+        "desc": "",
+        "type": "boolean"
+      },
+      "sys-dis",
+      {
+        "id": "sig-blood",
+        "name": "Significant blood's values change",
+        "desc": ""
+      },
+      {
+        "id": "hist-radio",
+        "name": "History of radiotherapy",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "id": "sys-dis",
+    "name": "System disease, metabolic disease and syndromes",
+    "options": [
+      {
+        "id": "paget-dis",
+        "name": "Paget's disease",
+        "desc": ""
+      },
+      {
+        "id": "osteoporosis",
+        "name": "Osteoporosis",
+        "desc": ""
+      },
+      {
+        "id": "osteomalacia",
+        "name": "Osteomalacia",
+        "desc": ""
+      },
+      {
+        "id": "hyperpara",
+        "name": "Hyperparathyroidism",
+        "desc": ""
+      },
+      {
+        "id": "multiple-myeloma",
+        "name": "Multiple myeloma",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "id": "chief-comp",
+    "name": "Chief complaint",
+    "page": true,
+    "options": [
+      "pain-0",
+      { "id": "parens-anes", "name": "Parensthesia & anesthesia" },
+      { "id": "bleeding-0", "name": "Bleeding" },
+      { "id": "loose-teeth", "name": "Loose teeth" },
+      { "id": "recent-occulusal", "name": "Recent occulusal problem" },
+      "delayed",
+      { "id": "swelling", "name": "Swelling" }
+    ]
+  },
+  {
+    "id": "pain-0",
+    "name": "Pain",
+    "type": "enum",
+    "options": [
+      "localized-0",
+      {
+        "id": "generalized-0",
+        "name": "Generalized (full body)"
+      }
+    ]
+  },
+  {
+    "id": "localized-0",
+    "name": "Localized",
+    "type": "enum",
+    "options": [
+      { "id": "painless-0", "name": "Painless" },
+      { "id": "tender", "name": "Tender" },
+      "painful"
+    ]
+  },
+  {
+    "id": "painful",
+    "name": "Painful",
+    "type": "enum",
+    "options": [
+      { "id": "sharp-0", "name": "Sharp" },
+      { "id": "dull-0", "name": "Dull" }
+    ]
+  },
+  {
+    "id": "delayed",
+    "name": "Delayed tooth eruption or missing",
+    "type": "enum",
+    "options": [
+      { "id": "localized-1", "name": "Localized" },
+      { "id": "generalized-1", "name": "Generalized" }
+    ]
+  },
+  {
+    "id": "onset-course",
+    "name": "Onset & course",
+    "page": true,
+    "type": "enum",
+    "options": [{}, {}, {}]
+  },
+  {
+    "id": "clinical-exam",
+    "name": "Clinical examination",
+    "page": true,
+    "options": ["border-0", "shape-0", "consist", {}, {}, {}]
+  },
+  {
+    "id": "border-0",
+    "name": "Border",
+    "type": "enum",
+    "options": [{}, {}]
+  },
+  {
+    "id": "shape-0",
+    "name": "Shape",
+    "type": "enum",
+    "options": [{}, {}]
+  },
+  {
+    "id": "consist",
+    "name": "Consistancy",
+    "type": "enum",
+    "options": [{}, {}, {}, {}, {}]
+  },
+  {
+    "id": "imaging-fin",
+    "name": "Imaging finding",
+    "page": true,
+    "options": [
+      "shape-size",
+      "periphery",
+      "location",
+      "int-struct",
+      "effects-surr"
+    ]
+  },
+  {
+    "id": "shape-size",
+    "name": "Shape and size",
+    "options": [{}, "shape-1"]
+  },
+  {
+    "id": "shape-1",
+    "name": "Shape",
+    "type": "enum",
+    "options": [{}, {}, {}]
+  },
+  {
+    "id": "periphery",
+    "name": "Periphery",
+    "type": "enum",
+    "options": ["well-defined", "ill-defined"]
+  },
+  {
+    "id": "well-defined",
+    "name": "Well-defined",
+    "type": "enum",
+    "options": [{}, {}, {}, {}]
+  },
+  {
+    "id": "ill-defined",
+    "name": "Ill-defined",
+    "type": "enum",
+    "options": [{}, {}]
+  },
+  {
+    "id": "location",
+    "name": "Location",
+    "options": [
+      {
+        "id": "ana-location",
+        "name": "Anatomic location",
+        "image": "/path/to/image",
+        "desc": "Enter a and b",
+        "params": { "a": "number", "b": "number" }
+      },
+      "side",
+      "relation-tooth",
+      "type"
+    ]
+  },
+  {
+    "id": "side",
+    "name": "Side",
+    "type": "enum",
+    "options": [{}, {}]
+  },
+  {
+    "id": "relation-tooth",
+    "name": "Relation to tooth",
+    "type": "enum",
+    "options": ["perapical", {}, {}, {}]
+  },
+  {
+    "id": "perapical",
+    "name": "Periapical",
+    "type": "enum",
+    "options": [{}, {}]
+  },
+  {
+    "id": "type",
+    "name": "Type",
+    "type": "enum",
+    "options": [{}, {}, {}]
+  },
+  {
+    "id": "int-struct",
+    "name": "Internal structure",
+    "options": ["radiolucent", "mixed", {}]
+  },
+  {
+    "id": "radiolucent",
+    "name": "Radiolucent",
+    "type": "enum",
+    "options": [{}, "multiocular", {}]
+  },
+  {
+    "id": "multiocular",
+    "name": "Multiocular",
+    "type": "enum",
+    "options": [{}, {}, {}]
+  },
+  {
+    "id": "mixed",
+    "name": "Radiopaque and radiolucent (mixed)",
+    "options": [{}, "int-septa", {}, {}, {}]
+  },
+  {
+    "id": "int-septa",
+    "name": "Interal septa",
+    "type": "enum",
+    "options": [{}, {}]
+  },
+  {
+    "id": "effects-surr",
+    "name": "Effects on surrending",
+    "options": [
+      "tooth",
+      "lamina-dura",
+      "pdl-space",
+      "ian-canal",
+      "maximillary-sinus",
+      "periphery-bone",
+      "corital-bone",
+      "periosteal-reaction"
+    ]
+  },
+  {
+    "id": "tooth",
+    "name": "",
+    "type": "",
+    "options": [{}, {}, {}]
+  },
+  {
+    "id": "lamina-dura",
+    "name": "",
+    "type": "",
+    "options": [{}, {}]
+  },
+  {
+    "id": "pdl-space",
+    "name": "",
+    "type": "",
+    "options": [{}, {}, {}]
+  },
+  {
+    "id": "ian-canal",
+    "name": "",
+    "type": "",
+    "options": [{}, {}, {}]
+  },
+  {
+    "id": "maximillary-sinus",
+    "name": "",
+    "type": "",
+    "options": [{}, {}]
+  },
+  {
+    "id": "periphery-bone",
+    "name": "",
+    "type": "",
+    "options": [{}, {}]
+  },
+  {
+    "id": "corital-bone",
+    "name": "",
+    "type": "",
+    "options": [{}, {}]
+  },
+  {
+    "id": "periosteal-reaction",
+    "name": "",
+    "type": "",
+    "options": [{}, {}, {}, "spiculated", {}, {}]
+  },
+  {
+    "id": "spiculated",
+    "name": "",
+    "type": "",
+    "options": [{}, {}, {}]
+  }
+]
