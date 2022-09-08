@@ -1,21 +1,33 @@
-import useData from "./hooks/useData";
-import rawData from "./data/data.json";
-import TreeView from "@mui/lab/TreeView";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import TreeItem from "@mui/lab/TreeItem";
-import { useState } from "react";
+import TreeView from "@mui/lab/TreeView";
 import {
   Button,
   Checkbox,
   FormControlLabel,
+  IconButton,
   Radio,
   Stack,
+  Typography,
 } from "@mui/material";
+import { useState } from "react";
+import { RecoilRoot } from "recoil";
+import { useData } from "./hooks/data";
 
 function App() {
-  const [data, setData] = useState(rawData);
-  const pages = useData(data);
+  return (
+    <RecoilRoot>
+      <SimpsPage />
+    </RecoilRoot>
+  );
+}
+
+export default App;
+
+const SimpsPage = () => {
+  const [pages] = useData();
   const [pageIndex, setPageIndex] = useState(0);
   const currPage = Array.isArray(pages) ? pages[pageIndex] : null;
   const canGoBack = pageIndex > 0;
@@ -26,57 +38,71 @@ function App() {
   const handleNext = () => {
     if (canGoForward) setPageIndex((i) => i + 1);
   };
-  const updateItem = (id, value, ofEnum) => {
-    console.log(id, value);
-    setData((s) => {
-      let arr = Array.from(s);
-      let item = arr.find(
-        (item) =>
-          item.options.includes(id) ||
-          item.options.find((option) => option.id === id)
-      );
-      if (item) {
-        item.options.forEach((option) => {
-          if (ofEnum) {
-            if (typeof option === "string") {
-              let optionRef = arr.find(option);
-              optionRef.value = false;
-            } else option.value = false;
-          }
-
-          if (typeof option === "string" && option === id) {
-            let optionRef = arr.find(option);
-            optionRef.value = value;
-          } else if (option.id === id) option.value = value;
-        });
-      }
-
-      return arr;
-    });
-  };
 
   return (
-    <Stack gap={4}>
-      <Page data={currPage} updateItem={updateItem} />
-      <Stack direction="row" gap={1}>
-        <Button variant="contained" onClick={handlePrev} disabled={!canGoBack}>
-          Prev Page
-        </Button>
-        <Button
-          variant="contained"
-          onClick={handleNext}
-          disabled={!canGoForward}
+    <Stack flex={1} gap={2} justifyContent="space-between" alignItems="stretch">
+      <PageContent data={currPage} />
+      <Stack
+        direction="row"
+        gap={1}
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Stack
+          direction="row"
+          width={80}
+          alignItems="center"
+          sx={{ cursor: canGoBack ? "pointer" : "initial" }}
+          onClick={handlePrev}
         >
-          Next Page
-        </Button>
+          <IconButton
+            flex={1}
+            variant="contained"
+            disabled={!canGoBack}
+            color="primary"
+          >
+            <ChevronLeftIcon />
+          </IconButton>
+          <Typography
+            variant="caption"
+            textTransform="uppercase"
+            color={canGoBack ? "primary" : "#666"}
+          >
+            Previous
+          </Typography>
+        </Stack>
+        <Typography textTransform="uppercase" variant="subtitle2">
+          {pageIndex + 1}
+        </Typography>
+        <Stack
+          direction="row"
+          width={80}
+          alignItems="center"
+          sx={{ cursor: canGoForward ? "pointer" : "initial" }}
+          onClick={handleNext}
+        >
+          <Typography
+            variant="caption"
+            textTransform="uppercase"
+            color={canGoForward ? "primary" : "#666"}
+          >
+            Next
+          </Typography>
+          <IconButton
+            variant="contained"
+            disabled={!canGoForward}
+            color="primary"
+          >
+            <ChevronRightIcon />
+          </IconButton>
+        </Stack>
       </Stack>
     </Stack>
   );
-}
+};
 
-export default App;
-
-const Page = ({ data, updateItem }) => {
+const PageContent = ({ data }) => {
+  const [, , resetData] = useData();
   const [expanded, setExpanded] = useState([]);
   const handleToggle = (id) => {
     setExpanded((s) => {
@@ -89,8 +115,33 @@ const Page = ({ data, updateItem }) => {
   };
   return (
     data && (
-      <div>
-        <h1>{data.name}</h1>
+      <Stack gap={4} flex={1}>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          pt={2}
+          pl={4}
+        >
+          <Typography variant="h5" fontWeight={700}>
+            {data.name}
+          </Typography>
+          <Button
+            variant="outlined"
+            size="small"
+            color="error"
+            sx={{ ml: 2, mr: 2 }}
+            onClick={resetData}
+          >
+            <Typography
+              variant="caption"
+              textTransform="uppercase"
+              sx={{ cursor: "pointer" }}
+            >
+              Reset
+            </Typography>
+          </Button>
+        </Stack>
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
@@ -99,31 +150,23 @@ const Page = ({ data, updateItem }) => {
           onNodeSelect={() => {}}
           sx={{ flex: 1, overflowY: "auto" }}
         >
-          <Options
-            data={data}
-            updateItem={updateItem}
-            handleToggle={handleToggle}
-          />
+          <Options data={data} handleToggle={handleToggle} />
         </TreeView>
-      </div>
+      </Stack>
     )
   );
 };
 
-const Options = ({ data, updateItem, handleToggle }) => {
+const Options = ({ data, handleToggle }) => {
   const options = data.options;
   const isEnum = data.type === "enum";
   return options.map((option, i) => (
-    <Option
-      data={option}
-      ofEnum={isEnum}
-      updateItem={updateItem}
-      handleToggle={handleToggle}
-    />
+    <Option data={option} ofEnum={isEnum} handleToggle={handleToggle} />
   ));
 };
 
-const Option = ({ data, ofEnum, updateItem, handleToggle }) => {
+const Option = ({ data, ofEnum, handleToggle }) => {
+  const [, updateItem] = useData();
   const isHeader = !!data.options;
   const handleClick = (e) => {
     e.preventDefault();
