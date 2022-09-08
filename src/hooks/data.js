@@ -1,40 +1,11 @@
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import { useRecoilState } from "recoil";
-import { dataState } from "../recoil/atoms";
 import rawData from "../data/data.json";
+import { dataState } from "../recoil/atoms";
 
 export function useData() {
   const [data, setData] = useRecoilState(dataState);
 
-  // to-nested
-  const pages = useMemo(() => {
-    let idsToCheck = [];
-    let dataFilled = JSON.parse(JSON.stringify(data));
-    for (let i = dataFilled.length - 1; i >= 0; --i) {
-      let header = dataFilled[i];
-      const headerId = header.id;
-      if (idsToCheck.includes(headerId))
-        console.error("header id already exists", headerId);
-      idsToCheck.push(headerId);
-      if (!header.options) return console.error("options not defined", header);
-      for (let j = header.options.length - 1; j >= 0; --j) {
-        let option = header.options[j];
-        if (typeof option === "string") {
-          let populatedOption = data.find((d) => d.id === option);
-          if (!populatedOption)
-            return console.error("Option not found", option);
-          if (!populatedOption.id) return console.error("Option has no id");
-          console.log(header.options[j], j);
-          dataFilled[i].options[j] = populatedOption;
-        }
-        const optionId = dataFilled[i].options[j].id;
-        idsToCheck.push(optionId);
-      }
-    }
-    return dataFilled.filter((d) => d.page) ?? [];
-  }, [data]);
-
-  // update-flatten
   const updateItem = useCallback(
     (id, value, ofEnum) => {
       console.log(id, value);
@@ -47,13 +18,15 @@ export function useData() {
         );
         if (item) {
           item.options.forEach((option) => {
+            // if option is of an enum parent
             if (ofEnum) {
               if (typeof option === "string") {
-                let optionRef = arr.find(option);
-                optionRef.value = false;
-              } else option.value = false;
+                let optionRef = arr.find((i) => i.id === option);
+                optionRef.value = null;
+              } else option.value = null;
             }
 
+            // if not from enum parent
             if (typeof option === "string" && option === id) {
               let optionRef = arr.find((i) => i.id === option);
               optionRef.value = value;
@@ -69,5 +42,5 @@ export function useData() {
 
   const resetData = useCallback(() => setData(rawData), [setData]);
 
-  return [pages, updateItem, resetData];
+  return [data, updateItem, resetData];
 }

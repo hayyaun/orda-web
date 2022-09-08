@@ -27,14 +27,12 @@
       {
         "id": "pat-male",
         "name": "Male",
-        "desc": "",
-        "type": "boolean"
+        "desc": ""
       },
       {
         "id": "pat-female",
         "name": "Female",
-        "desc": "",
-        "type": "boolean"
+        "desc": ""
       }
     ]
   },
@@ -46,26 +44,22 @@
       {
         "id": "fever-illness",
         "name": "Fever and Illness",
-        "desc": "",
-        "type": "boolean"
+        "desc": ""
       },
       {
         "id": "dental-prob",
         "name": "Dental Problem",
-        "desc": "",
-        "type": "boolean"
+        "desc": ""
       },
       {
         "id": "recent-gingival",
         "name": "Recent gingival or periodontal problem",
-        "desc": "",
-        "type": "boolean"
+        "desc": ""
       },
       {
         "id": "history-of-surgery",
         "name": "History of surgery or trauma",
-        "desc": "",
-        "type": "boolean"
+        "desc": ""
       },
       "sys-dis",
       {
@@ -170,31 +164,54 @@
     "name": "Onset & course",
     "page": true,
     "type": "enum",
-    "options": [{}, {}, {}]
+    "options": [
+      { "id": "slow-0", "name": "Slow(Monnths to years" },
+      { "id": "moderate-0", "name": "Moderate(weeks to about 2months)" },
+      { "id": "rapid-0", "name": "Rapid(Hours to days" }
+    ]
   },
   {
     "id": "clinical-exam",
     "name": "Clinical examination",
     "page": true,
-    "options": ["border-0", "shape-0", "consist", {}, {}, {}]
+    "options": [
+      "border-0",
+      "shape-0",
+      "consist",
+      { "id": "Percussion", "name": "Percussion" },
+      { "id": "Aspiration", "name": "Aspiration" },
+      { "id": "Auscultation", "name": "Auscultation" }
+    ]
   },
   {
     "id": "border-0",
     "name": "Border",
     "type": "enum",
-    "options": [{}, {}]
+    "options": [
+      { "id": "Regular-0", "name": "Regular" },
+      { "id": "Irregular-0", "name": "Irregular" }
+    ]
   },
   {
     "id": "shape-0",
     "name": "Shape",
     "type": "enum",
-    "options": [{}, {}]
+    "options": [
+      { "id": "Round-0", "name": "Round or Ovoid" },
+      { "id": "Irregular-1", "name": "Irregular" }
+    ]
   },
   {
     "id": "consist",
     "name": "Consistancy",
     "type": "enum",
-    "options": [{}, {}, {}, {}, {}]
+    "options": [
+      { "id": "Soft", "name": "Soft" },
+      { "id": "Cheesy", "name": "Chessy" },
+      { "id": "Rubbery", "name": "Rubbery" },
+      { "id": "Firm", "name": "Firm" },
+      { "id": "Bony-hard", "name": "Bony-hard" }
+    ]
   },
   {
     "id": "imaging-fin",
@@ -211,13 +228,24 @@
   {
     "id": "shape-size",
     "name": "Shape and size",
-    "options": [{}, "shape-1"]
+    "options": [
+      {
+        "id": "size",
+        "name": "Size",
+        "type": "number"
+      },
+      "shape-1"
+    ]
   },
   {
     "id": "shape-1",
     "name": "Shape",
     "type": "enum",
-    "options": [{}, {}, {}]
+    "options": [
+      { "id": "Round-1", "name": "Round or Ovoid" },
+      { "id": "Scalloped", "name": "Scalloped" },
+      { "id": "Irregular-2", "name": "Irregular" }
+    ]
   },
   {
     "id": "periphery",
@@ -229,88 +257,147 @@
     "id": "well-defined",
     "name": "Well-defined",
     "type": "enum",
-    "options": [{}, {}, {}, {}]
+    "options": [
+      { "id": "Punched", "name": "Punched-out" },
+      { "id": "Corticated", "name": "Corticated" },
+      { "id": "Sclerotic", "name": "Sclerotic" },
+      { "id": "Soft capsule", "name": "Soft capsule" }
+    ]
   },
   {
     "id": "ill-defined",
     "name": "Ill-defined",
     "type": "enum",
-    "options": [{}, {}]
+    "options": [
+      { "id": "Blending", "name": "Blending border" },
+      { "id": "Invasive", "name": "Invasive Border" }
+    ]
   },
   {
     "id": "location",
     "name": "Location",
+    "options": ["ana-location", "side", "relation-tooth", "type"]
+  },
+  {
+    "id": "ana-location",
+    "name": "Anatomic Location",
+    "desc": {
+      "title": "Pathologic extension",
+      "image": "/assets/ana-loc.jpg"
+    },
+    "type": "enum",
     "options": [
       {
-        "id": "ana-location",
-        "name": "Anatomic location",
-        "image": "/path/to/image",
-        "desc": "Enter a and b",
-        "params": { "a": "number", "b": "number" }
+        "id": "ana-location-maxilla",
+        "name": "Maxilla",
+        "type": "range"
       },
-      "side",
-      "relation-tooth",
-      "type"
+      {
+        "id": "ana-location-mandible",
+        "name": "Mandible",
+        "type": "range"
+      },
+      {
+        "id": "ana-location-both",
+        "name": "Both",
+        "type": "range"
+      }
     ]
   },
   {
     "id": "side",
     "name": "Side",
     "type": "enum",
-    "options": [{}, {}]
+    "options": [
+      { "id": "Unilatral", "name": "Unilatral" },
+      { "id": "Bilateral", "name": "Bilateral" }
+    ]
   },
   {
     "id": "relation-tooth",
     "name": "Relation to tooth",
     "type": "enum",
-    "options": ["perapical", {}, {}, {}]
+    "options": [
+      "perapical",
+      { "id": "Pericoronal", "name": "pericoronal" },
+      { "id": "Interradicular", "name": "Interradicular" },
+      { "id": "related", "name": "Not related" }
+    ]
   },
   {
     "id": "perapical",
     "name": "Periapical",
     "type": "enum",
-    "options": [{}, {}]
+    "options": [
+      { "id": "Vital tooth", "name": "Vital tooth" },
+      { "id": "Nonvital", "name": "Nonvital" }
+    ]
   },
   {
     "id": "type",
     "name": "Type",
     "type": "enum",
-    "options": [{}, {}, {}]
+    "options": [
+      { "id": "Solitary", "name": "Solitary" },
+      { "id": "Multiple-seprate", "name": "Multiple seprate" },
+      { "id": "diffuse", "name": "Generalized diffuse" }
+    ]
   },
   {
     "id": "int-struct",
     "name": "Internal structure",
-    "options": ["radiolucent", "mixed", {}]
+    "options": [
+      "radiolucent",
+      "mixed",
+      { "id": "Radiopaque", "name": "Radiopaque" }
+    ]
   },
   {
     "id": "radiolucent",
     "name": "Radiolucent",
     "type": "enum",
-    "options": [{}, "multiocular", {}]
+    "options": [
+      { "id": "Uniocular", "name": "Uniocular" },
+      "multiocular",
+      { "id": "Rarefaction", "name": "Generalized rarefaction" }
+    ]
   },
   {
     "id": "multiocular",
     "name": "Multiocular",
     "type": "enum",
-    "options": [{}, {}, {}]
+    "options": [
+      { "id": "Soap", "name": "Soap bubble" },
+      { "id": "Honey", "name": "Honey comb" },
+      { "id": "Tenis", "name": "Tenis racket" }
+    ]
   },
   {
     "id": "mixed",
     "name": "Radiopaque and radiolucent (mixed)",
-    "options": [{}, "int-septa", {}, {}, {}]
+    "options": [
+      { "id": "Unusual", "name": "Unusual trabeculation" },
+      "int-septa",
+      { "id": "Dystrophic", "name": "Dystrophic calcification" },
+      { "id": "Amorph", "name": "Amorphous bone" },
+      { "id": "Dent-struct", "name": "Dental structure" }
+    ]
   },
   {
     "id": "int-septa",
     "name": "Interal septa",
     "type": "enum",
-    "options": [{}, {}]
+    "options": [
+      { "id": "Wispy", "name": "Wispy" },
+      { "id": "Coarse", "name": "Coarse" }
+    ]
   },
   {
     "id": "effects-surr",
     "name": "Effects on surrending",
     "options": [
       "tooth",
-      "lamina-dura",
+      { "id": "Dura", "name": "Loss of lamina dura" },
       "pdl-space",
       "ian-canal",
       "maximillary-sinus",
@@ -321,56 +408,81 @@
   },
   {
     "id": "tooth",
-    "name": "",
-    "type": "",
-    "options": [{}, {}, {}]
-  },
-  {
-    "id": "lamina-dura",
-    "name": "",
-    "type": "",
-    "options": [{}, {}]
+    "name": "Tooth",
+
+    "options": [
+      { "id": "Dispalce-0", "name": "Displacement" },
+      { "id": "Resorp", "name": "Root resorption" },
+      { "id": "Divergence", "name": "Root divergence" }
+    ]
   },
   {
     "id": "pdl-space",
-    "name": "",
-    "type": "",
-    "options": [{}, {}, {}]
+    "name": "PDL space",
+    "type": "enum",
+    "options": [
+      { "id": "wide-0", "name": "Redular widening" },
+      { "id": "wide-1", "name": "Irregular widening" }
+    ]
   },
   {
     "id": "ian-canal",
-    "name": "",
-    "type": "",
-    "options": [{}, {}, {}]
+    "name": "IAN canal & Mental foramen",
+
+    "options": [
+      { "id": "Dispalce-1", "name": "Displacement" },
+      { "id": "Enlarge", "name": "Enlargment" },
+      { "id": "Destruct-0", "name": "Destruction" }
+    ]
   },
   {
     "id": "maximillary-sinus",
-    "name": "",
-    "type": "",
-    "options": [{}, {}]
+    "name": "Maxillary sinus",
+
+    "options": [
+      { "id": "Dispalce-2", "name": "Displacement" },
+      { "id": "Destruct-1", "name": "Destruction" }
+    ]
   },
   {
     "id": "periphery-bone",
-    "name": "",
-    "type": "",
-    "options": [{}, {}]
+    "name": "Periphery bone",
+
+    "options": [
+      { "id": "Sclerotic-1", "name": "Sclerotic bone" },
+      { "id": "Destruct-2", "name": "Destruction" }
+    ]
   },
   {
     "id": "corital-bone",
-    "name": "",
-    "type": "",
-    "options": [{}, {}]
+    "name": "Cortial bone",
+    "type": "enum",
+    "options": [
+      { "id": "Expand", "name": "Expansion with out destruction" },
+      { "id": "Destruct-3", "name": "Destruction" }
+    ]
   },
   {
     "id": "periosteal-reaction",
-    "name": "",
-    "type": "",
-    "options": [{}, {}, {}, "spiculated", {}, {}]
+    "name": "Periosteal reaction",
+    "type": "enum",
+    "options": [
+      { "id": "Single", "name": "Single layer" },
+      { "id": "Onion", "name": "Mulitlayered(Onion skin)" },
+      { "id": "Solid", "name": "Solid" },
+      "spiculated",
+      { "id": "Compelx", "name": "Disorganized or Complex" },
+      { "id": "Codman", "name": "codman triangle" }
+    ]
   },
   {
     "id": "spiculated",
-    "name": "",
-    "type": "",
-    "options": [{}, {}, {}]
+    "name": "Spiculated",
+    "type": "enum",
+    "options": [
+      { "id": "Hair", "name": "Hair-on-end" },
+      { "id": "Divergnet", "name": "Divergent(Sunburst" },
+      { "id": "Sloping", "name": "Sloping(velvet" }
+    ]
   }
 ]
