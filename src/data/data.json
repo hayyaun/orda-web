@@ -127,6 +127,7 @@
     "id": "pain-0",
     "name": "Pain",
     "type": "enum",
+    "required": true,
     "options": [
       "localized-0",
       {
@@ -168,6 +169,7 @@
     "name": "Onset & course",
     "page": true,
     "type": "enum",
+    "required": true,
     "options": [
       { "id": "slow-0", "name": "Slow (Months to years" },
       { "id": "moderate-0", "name": "Moderate (weeks to about 2months)" },
@@ -352,7 +354,6 @@
     "id": "int-struct",
     "name": "Internal structure",
     "type": "enum",
-    "required": true,
     "options": [
       "radiolucent",
       "mixed",
