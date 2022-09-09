@@ -1,0 +1,507 @@
+[
+  {
+    "id": "pat-info",
+    "name": "Patient's information",
+    "page": true,
+    "options": [
+      {
+        "id": "pat-name",
+        "name": "Patient Name",
+        "required": true,
+        "desc": "",
+        "type": "string"
+      },
+      "pat-gender",
+      {
+        "id": "pat-age",
+        "name": "Patient Age",
+        "required": true,
+        "desc": "",
+        "type": "number"
+      }
+    ]
+  },
+  {
+    "id": "pat-gender",
+    "name": "Patient's gender",
+    "required": true,
+    "type": "enum",
+    "options": [
+      {
+        "id": "pat-male",
+        "name": "Male",
+        "desc": ""
+      },
+      {
+        "id": "pat-female",
+        "name": "Female",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "id": "pat-his-cli-fin",
+    "name": "Patient history & clinical finding",
+    "page": true,
+    "options": [
+      {
+        "id": "fever-illness",
+        "name": "Fever and Illness",
+        "desc": ""
+      },
+      "dental-prob",
+      {
+        "id": "recent-gingival",
+        "name": "Recent gingival or periodontal problem",
+        "desc": ""
+      },
+      {
+        "id": "history-of-surgery",
+        "name": "History of surgery or trauma",
+        "desc": ""
+      },
+      "sys-dis",
+      {
+        "id": "sig-blood",
+        "name": "Significant blood's values change",
+        "desc": ""
+      },
+      {
+        "id": "hist-radio",
+        "name": "History of radiotherapy",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "id": "dental-prob",
+    "name": "Dental Problem",
+    "options": [
+      { "id": "primary-teeth", "name": "primary teeth" },
+      { "id": "deciduous-teeth", "name": "deciduous teeth" }
+    ]
+  },
+  {
+    "id": "sys-dis",
+    "name": "System disease, metabolic disease and syndromes",
+    "options": [
+      {
+        "id": "paget-dis",
+        "name": "Paget's disease",
+        "desc": ""
+      },
+      {
+        "id": "osteoporosis",
+        "name": "Osteoporosis",
+        "desc": ""
+      },
+      {
+        "id": "osteomalacia",
+        "name": "Osteomalacia",
+        "desc": ""
+      },
+      {
+        "id": "hyperpara",
+        "name": "Hyperparathyroidism",
+        "desc": ""
+      },
+      {
+        "id": "multiple-myeloma",
+        "name": "Multiple myeloma",
+        "desc": ""
+      }
+    ]
+  },
+  {
+    "id": "chief-comp",
+    "name": "Chief complaint",
+    "page": true,
+    "options": [
+      "pain-0",
+      { "id": "paresth-anes", "name": "Paresthesia & anesthesia" },
+      { "id": "bleeding-0", "name": "Bleeding" },
+      { "id": "loose-teeth", "name": "Loose teeth" },
+      { "id": "recent-occulusal", "name": "Recent occulusal problem" },
+      "delayed",
+      { "id": "swelling", "name": "Swelling" }
+    ]
+  },
+  {
+    "id": "pain-0",
+    "name": "Pain",
+    "type": "enum",
+    "required": true,
+    "options": [
+      "localized-0",
+      {
+        "id": "generalized-0",
+        "name": "Generalized (full body)"
+      }
+    ]
+  },
+  {
+    "id": "localized-0",
+    "name": "Localized",
+    "type": "enum",
+    "options": [
+      { "id": "painless-0", "name": "Painless" },
+      { "id": "tender", "name": "Tender" },
+      "painful"
+    ]
+  },
+  {
+    "id": "painful",
+    "name": "Painful",
+    "type": "enum",
+    "options": [
+      { "id": "sharp-0", "name": "Sharp" },
+      { "id": "dull-0", "name": "Dull" }
+    ]
+  },
+  {
+    "id": "delayed",
+    "name": "Delayed tooth eruption or missing",
+    "type": "enum",
+    "options": [
+      { "id": "localized-1", "name": "Localized" },
+      { "id": "generalized-1", "name": "Generalized" }
+    ]
+  },
+  {
+    "id": "onset-course",
+    "name": "Onset & course",
+    "page": true,
+    "type": "enum",
+    "required": true,
+    "options": [
+      { "id": "slow-0", "name": "Slow (Months to years)" },
+      { "id": "moderate-0", "name": "Moderate (weeks to about 2months)" },
+      { "id": "rapid-0", "name": "Rapid (Hours to days)" }
+    ]
+  },
+  {
+    "id": "clinical-exam",
+    "name": "Clinical examination",
+    "desc": "Observable findings",
+    "page": true,
+    "options": [
+      "border-0",
+      "shape-0",
+      "consist",
+      { "id": "Percussion", "name": "Percussion" },
+      { "id": "Aspiration", "name": "Aspiration" },
+      { "id": "Auscultation", "name": "Auscultation" }
+    ]
+  },
+  {
+    "id": "border-0",
+    "name": "Border",
+    "type": "enum",
+    "options": [
+      { "id": "Regular-0", "name": "Regular" },
+      { "id": "Irregular-0", "name": "Irregular" }
+    ]
+  },
+  {
+    "id": "shape-0",
+    "name": "Shape",
+    "type": "enum",
+    "options": [
+      { "id": "Round-0", "name": "Round or Ovoid" },
+      { "id": "Irregular-1", "name": "Irregular" }
+    ]
+  },
+  {
+    "id": "consist",
+    "name": "Consistancy",
+    "type": "enum",
+    "options": [
+      { "id": "Soft", "name": "Soft" },
+      { "id": "Cheesy", "name": "Chessy" },
+      { "id": "Rubbery", "name": "Rubbery" },
+      { "id": "Firm", "name": "Firm" },
+      { "id": "Bony-hard", "name": "Bony-hard" }
+    ]
+  },
+  {
+    "id": "imaging-fin",
+    "name": "Imaging finding",
+    "page": true,
+    "options": [
+      "shape-size",
+      "periphery",
+      "location",
+      "int-struct",
+      "effects-surr"
+    ]
+  },
+  {
+    "id": "shape-size",
+    "name": "Shape and size",
+    "options": [
+      {
+        "id": "size",
+        "name": "Size",
+        "type": "number"
+      },
+      "shape-1"
+    ]
+  },
+  {
+    "id": "shape-1",
+    "name": "Shape",
+    "required": true,
+    "type": "enum",
+    "options": [
+      { "id": "Round-1", "name": "Round or Ovoid" },
+      { "id": "Scalloped", "name": "Scalloped" },
+      { "id": "Irregular-2", "name": "Irregular" }
+    ]
+  },
+  {
+    "id": "periphery",
+    "name": "Periphery",
+    "required": true,
+    "type": "enum",
+    "options": ["well-defined", "ill-defined"]
+  },
+  {
+    "id": "well-defined",
+    "name": "Well-defined",
+    "type": "enum",
+    "options": [
+      { "id": "Punched", "name": "Punched-out" },
+      { "id": "Corticated", "name": "Corticated" },
+      { "id": "Sclerotic", "name": "Sclerotic" },
+      { "id": "Soft capsule", "name": "Soft capsule" }
+    ]
+  },
+  {
+    "id": "ill-defined",
+    "name": "Ill-defined",
+    "type": "enum",
+    "options": [
+      { "id": "Blending", "name": "Blending border" },
+      { "id": "Invasive", "name": "Invasive Border" }
+    ]
+  },
+  {
+    "id": "location",
+    "name": "Location",
+    "required": true,
+    "options": ["ana-location", "side", "relation-tooth", "type"]
+  },
+  {
+    "id": "ana-location",
+    "name": "Anatomic Location",
+    "desc": {
+      "title": "Pathologic extension",
+      "image": "/assets/ana-loc.jpg"
+    },
+    "type": "enum",
+    "options": [
+      {
+        "id": "ana-location-maxilla",
+        "name": "Maxilla",
+        "type": "range"
+      },
+      {
+        "id": "ana-location-mandible",
+        "name": "Mandible",
+        "type": "range"
+      },
+      {
+        "id": "ana-location-both",
+        "name": "Both",
+        "type": "range"
+      }
+    ]
+  },
+  {
+    "id": "side",
+    "name": "Side",
+    "type": "enum",
+    "options": [
+      { "id": "Unilatral", "name": "Unilatral" },
+      { "id": "Bilateral", "name": "Bilateral" }
+    ]
+  },
+  {
+    "id": "relation-tooth",
+    "name": "Relation to tooth",
+    "type": "enum",
+    "options": [
+      "perapical",
+      { "id": "Pericoronal", "name": "pericoronal" },
+      { "id": "Interradicular", "name": "Interradicular" },
+      { "id": "related", "name": "Not related" }
+    ]
+  },
+  {
+    "id": "perapical",
+    "name": "Periapical",
+    "type": "enum",
+    "options": [
+      { "id": "Vital tooth", "name": "Vital tooth" },
+      { "id": "Nonvital", "name": "Nonvital" }
+    ]
+  },
+  {
+    "id": "type",
+    "name": "Type",
+    "type": "enum",
+    "options": [
+      { "id": "Solitary", "name": "Solitary" },
+      { "id": "Multiple-seprate", "name": "Multiple seprate" },
+      { "id": "diffuse", "name": "Generalized diffuse" }
+    ]
+  },
+  {
+    "id": "int-struct",
+    "name": "Internal structure",
+    "required": true,
+    "type": "enum",
+    "options": [
+      "radiolucent",
+      "mixed",
+      { "id": "Radiopaque", "name": "Radiopaque" }
+    ]
+  },
+  {
+    "id": "radiolucent",
+    "name": "Radiolucent",
+    "type": "enum",
+    "options": [
+      { "id": "Uniocular", "name": "Uniocular" },
+      "multiocular",
+      { "id": "Rarefaction", "name": "Generalized rarefaction" }
+    ]
+  },
+  {
+    "id": "multiocular",
+    "name": "Multiocular",
+    "type": "enum",
+    "options": [
+      { "id": "Soap", "name": "Soap bubble" },
+      { "id": "Honey", "name": "Honey comb" },
+      { "id": "Tenis", "name": "Tenis racket" }
+    ]
+  },
+  {
+    "id": "mixed",
+    "name": "Radiopaque and radiolucent (mixed)",
+    "options": [
+      { "id": "Unusual", "name": "Unusual trabeculation" },
+      "int-septa",
+      { "id": "Dystrophic", "name": "Dystrophic calcification" },
+      { "id": "Amorph", "name": "Amorphous bone" },
+      { "id": "Dent-struct", "name": "Dental structure" }
+    ]
+  },
+  {
+    "id": "int-septa",
+    "name": "Interal septa",
+    "type": "enum",
+    "options": [
+      { "id": "Wispy", "name": "Wispy" },
+      { "id": "Coarse", "name": "Coarse" }
+    ]
+  },
+  {
+    "id": "effects-surr",
+    "name": "Effects on surrending",
+    "options": [
+      "tooth",
+      "lamina-dura",
+      "pdl-space",
+      "ian-canal",
+      "maximillary-sinus",
+      "periphery-bone",
+      "corital-bone",
+      "periosteal-reaction"
+    ]
+  },
+  {
+    "id": "tooth",
+    "name": "Tooth",
+    "options": [
+      { "id": "Dispalce-0", "name": "Displacement" },
+      { "id": "Resorp", "name": "Root resorption" },
+      { "id": "Divergence", "name": "Root divergence" }
+    ]
+  },
+  {
+    "id": "lamina-dura",
+    "name": "Lamina Dura",
+    "options": [{ "id": "Dura", "name": "Loss of lamina dura" }]
+  },
+  {
+    "id": "pdl-space",
+    "name": "PDL space",
+    "type": "enum",
+    "options": [
+      { "id": "wide-0", "name": "Regular widening" },
+      { "id": "wide-1", "name": "Irregular widening" }
+    ]
+  },
+  {
+    "id": "ian-canal",
+    "name": "IAN canal & Mental foramen",
+
+    "options": [
+      { "id": "Dispalce-1", "name": "Displacement" },
+      { "id": "Enlarge", "name": "Enlargment" },
+      { "id": "Destruct-0", "name": "Destruction" }
+    ]
+  },
+  {
+    "id": "maximillary-sinus",
+    "name": "Maxillary sinus",
+
+    "options": [
+      { "id": "Dispalce-2", "name": "Displacement" },
+      { "id": "Destruct-1", "name": "Destruction" }
+    ]
+  },
+  {
+    "id": "periphery-bone",
+    "name": "Periphery bone",
+
+    "options": [
+      { "id": "Sclerotic-1", "name": "Sclerotic bone" },
+      { "id": "Destruct-2", "name": "Destruction" }
+    ]
+  },
+  {
+    "id": "corital-bone",
+    "name": "Cortial bone",
+    "type": "enum",
+    "options": [
+      { "id": "Expand", "name": "Expansion with out destruction" },
+      { "id": "Destruct-3", "name": "Destruction" }
+    ]
+  },
+  {
+    "id": "periosteal-reaction",
+    "name": "Periosteal reaction",
+    "type": "enum",
+    "options": [
+      { "id": "Single", "name": "Single layer" },
+      { "id": "Onion", "name": "Mulitlayered(Onion skin)" },
+      { "id": "Solid", "name": "Solid" },
+      "spiculated",
+      { "id": "Compelx", "name": "Disorganized or Complex" },
+      { "id": "Codman", "name": "codman triangle" }
+    ]
+  },
+  {
+    "id": "spiculated",
+    "name": "Spiculated",
+    "type": "enum",
+    "options": [
+      { "id": "Hair", "name": "Hair-on-end" },
+      { "id": "Divergnet", "name": "Divergent(Sunburst" },
+      { "id": "Sloping", "name": "Sloping(velvet" }
+    ]
+  }
+]

@@ -3,13 +3,9 @@ import { useRecoilState } from "recoil";
 import rawData from "../data/data.json";
 import { dataState } from "../recoil/atoms";
 
-// TODO flatten data.json -> use string value for enum
-
 const resetItem = (arr, i) => {
   // populate item
-  let item = null;
-  if (typeof i === "string") item = arr.find((x) => x.id === i);
-  else item = i;
+  let item = arr.find((x) => x.id === i);
 
   // reset if found
   if (item) {
@@ -29,9 +25,10 @@ export function useData() {
   const [data, setData] = useRecoilState(dataState);
 
   const updateItem = useCallback(
-    (id, value, ofEnum) => {
+    (id, value, ofEnum, prevArr) => {
+      let result = null;
       setData((s) => {
-        let arr = JSON.parse(JSON.stringify(s));
+        let arr = JSON.parse(JSON.stringify(prevArr || s));
         let item =
           arr.find((i) => i.id === id) ||
           arr
@@ -50,11 +47,14 @@ export function useData() {
           }
           // update value
           item.value = value;
+          result = arr;
           return arr;
         } else console.error("Couldnt find item", id);
 
+        result = arr;
         return arr;
       });
+      return result;
     },
     [setData]
   );

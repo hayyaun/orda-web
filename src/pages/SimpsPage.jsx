@@ -7,6 +7,7 @@ import {
   Checkbox,
   FormControlLabel,
   Radio,
+  RadioGroup,
   Stack,
   TextField,
   Typography,
@@ -14,11 +15,11 @@ import {
 import { Fragment, useMemo, useState } from "react";
 import { useData } from "../hooks/data";
 import { usePageIndex } from "../hooks/pages";
+import delay from "delay";
 
 export default function SimpsPage() {
   const { currPage: data } = usePageIndex();
   const [allData, , resetData] = useData();
-  const [expanded, setExpanded] = useState([]);
 
   const valued = useMemo(() => {
     const expSet = new Set();
@@ -33,8 +34,8 @@ export default function SimpsPage() {
     return Array.from(expSet);
   }, [allData]);
 
-  const handleToggle = (event, nodeIds) => {
-    setExpanded(nodeIds);
+  const handleReset = () => {
+    resetData();
   };
 
   return (
@@ -61,7 +62,7 @@ export default function SimpsPage() {
           size="small"
           color="error"
           sx={{ ml: 2, mr: 2 }}
-          onClick={resetData}
+          onClick={handleReset}
         >
           <Typography
             variant="caption"
@@ -76,39 +77,58 @@ export default function SimpsPage() {
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
-          expanded={[...expanded, ...valued]}
+          expanded={valued}
           selected={[]}
           onNodeSelect={() => {}}
-          onNodeToggle={handleToggle}
+          onNodeToggle={() => {}}
           sx={{ flex: 1, overflowY: "auto" }}
         >
-          <OptionsList data={data} />
+          <OptionsList data={data} ofEnum={false} />
         </TreeView>
       )}
     </Stack>
   );
 }
 
-const OptionsList = ({ data }) => {
+const OptionsList = ({ data, ofEnum }) => {
   const options = data.options;
   const isEnum = data.type === "enum";
+  const Wrapper = ({ children }) =>
+    isEnum ? (
+      <RadioGroup name={data.name} value={data.value} onChange={() => {}}>
+        {children}
+      </RadioGroup>
+    ) : (
+      <Fragment>{children}</Fragment>
+    );
+
   return options.map((option, i) => (
-    <Item key={i} data={option} ofEnum={isEnum && data.id} />
+    <Wrapper key={i}>
+      <Item data={option} ofEnum={isEnum && data.id} />
+    </Wrapper>
   ));
 };
 
 const Item = ({ data: option, ofEnum }) => {
   const [allData, updateItem] = useData();
-  const data = useMemo(() => {
-    if (typeof option === "string") return allData.find((i) => i.id === option);
-    else return option;
-  }, [allData, option]);
+  const data = useMemo(
+    () => allData.find((i) => i.id === option),
+    [allData, option]
+  );
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!data.type || data.type === "enum")
+    console.log(data, ofEnum);
+    if (ofEnum) {
+      console.log("of enum");
+      const prevArr = updateItem(ofEnum, data.id, ofEnum);
+      if (!data.type || data.type === "enum") {
+        updateItem(data.id, !data.value, ofEnum, prevArr);
+      }
+    } else if (!data.type || data.type === "enum") {
       updateItem(data.id, !data.value, ofEnum);
+    }
   };
 
   // console.log(data.id, data);
@@ -117,7 +137,6 @@ const Item = ({ data: option, ofEnum }) => {
     <TreeItem
       nodeId={data.id}
       onClick={handleClick}
-      defaultChecked={!!data.value}
       label={<ItemLabel data={data} ofEnum={ofEnum} />}
     >
       {(!!data.desc || !!data.type || !!data.options) && (
@@ -127,22 +146,10 @@ const Item = ({ data: option, ofEnum }) => {
   );
 };
 
-const ItemContent = ({ data, ofEnum }) => {
-  const [, updateItem] = useData();
-  return (
-    <Fragment>
-      {!!data.desc && <ItemDesc data={data} />}
-      {!!data.type && (
-        <ItemInput data={data} ofEnum={ofEnum} updateItem={updateItem} />
-      )}
-      {!!data.options && <OptionsList data={data} updateItem={updateItem} />}
-    </Fragment>
-  );
-};
-
 const ItemLabel = ({ data, ofEnum }) => {
   return (
     <FormControlLabel
+      value={data.id}
       label={
         <Typography sx={{ display: "flex", gap: 1 }}>
           {data.name}
@@ -153,12 +160,22 @@ const ItemLabel = ({ data, ofEnum }) => {
       }
       control={
         ofEnum ? (
-          <Radio size="small" checked={!!data.value} onChange={() => {}} />
+          <Radio size="small" />
         ) : (
           <Checkbox size="small" checked={!!data.value} onChange={() => {}} />
         )
       }
     />
+  );
+};
+
+const ItemContent = ({ data, ofEnum }) => {
+  return (
+    <Fragment>
+      {!!data.desc && <ItemDesc data={data} />}
+      {!!data.type && <ItemInput data={data} ofEnum={ofEnum} />}
+      {!!data.options && <OptionsList data={data} ofEnum={ofEnum} />}
+    </Fragment>
   );
 };
 
@@ -177,7 +194,8 @@ const ItemDesc = ({ data }) => {
   );
 };
 
-const ItemInput = ({ data, ofEnum, updateItem }) => {
+const ItemInput = ({ data, ofEnum }) => {
+  const [, updateItem] = useData();
   return (
     data.type &&
     data.type !== "enum" && (
