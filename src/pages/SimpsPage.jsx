@@ -11,29 +11,31 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Fragment, useMemo } from "react";
-import { useRecoilState } from "recoil";
+import { Fragment, useMemo, useState } from "react";
 import { useData } from "../hooks/data";
 import { usePageIndex } from "../hooks/pages";
-import { treeState } from "../recoil/atoms";
 
 export default function SimpsPage() {
   const { currPage: data } = usePageIndex();
-  const [, , resetData] = useData();
-  const [expanded, setExpanded] = useRecoilState(treeState);
-  // TODO retrieve expanded items from data filled
-  const handleToggle = (id) => {
-    setExpanded((s) => {
-      let arr = Array.from(s);
-      let index = s.indexOf(id);
-      if (index < 0) arr.push(id);
-      else arr.splice(index, 1);
-      return arr;
+  const [allData, , resetData] = useData();
+  const [expanded, setExpanded] = useState([]);
+
+  const valued = useMemo(() => {
+    const expSet = new Set();
+    allData.forEach((i) => {
+      if (i.value) expSet.add(i.id);
+      if (Array.isArray(i.options)) {
+        i.options.forEach((o) => {
+          if (o.value) expSet.add(o.id);
+        });
+      }
     });
-  };
-  const handleReset = () => {
-    resetData();
-    setExpanded([]);
+    console.log(expSet);
+    return Array.from(expSet);
+  }, [allData]);
+
+  const handleToggle = (event, nodeIds) => {
+    setExpanded(nodeIds);
   };
 
   return (
@@ -60,7 +62,7 @@ export default function SimpsPage() {
           size="small"
           color="error"
           sx={{ ml: 2, mr: 2 }}
-          onClick={handleReset}
+          onClick={resetData}
         >
           <Typography
             variant="caption"
@@ -75,27 +77,28 @@ export default function SimpsPage() {
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
-          expanded={expanded}
+          expanded={[...expanded, ...valued]}
           selected={[]}
           onNodeSelect={() => {}}
+          onNodeToggle={handleToggle}
           sx={{ flex: 1, overflowY: "auto" }}
         >
-          <List data={data} handleToggle={handleToggle} />
+          <OptionsList data={data} />
         </TreeView>
       )}
     </Stack>
   );
 }
 
-const List = ({ data, handleToggle }) => {
+const OptionsList = ({ data }) => {
   const options = data.options;
   const isEnum = data.type === "enum";
   return options.map((option, i) => (
-    <Item key={i} data={option} ofEnum={isEnum} handleToggle={handleToggle} />
+    <Item key={i} data={option} ofEnum={isEnum} />
   ));
 };
 
-const Item = ({ data: option, ofEnum, handleToggle }) => {
+const Item = ({ data: option, ofEnum }) => {
   const [allData, updateItem] = useData();
   const data = useMemo(() => {
     if (typeof option === "string") return allData.find((i) => i.id === option);
@@ -107,7 +110,6 @@ const Item = ({ data: option, ofEnum, handleToggle }) => {
     e.stopPropagation();
     if (!data.type || data.type === "enum")
       updateItem(data.id, !data.value, ofEnum);
-    handleToggle(data.id);
   };
 
   // console.log(data.id, data);
@@ -120,13 +122,13 @@ const Item = ({ data: option, ofEnum, handleToggle }) => {
       label={<ItemLabel data={data} ofEnum={ofEnum} />}
     >
       {(!!data.desc || !!data.type || !!data.options) && (
-        <ItemContent data={data} ofEnum={ofEnum} handleToggle={handleToggle} />
+        <ItemContent data={data} ofEnum={ofEnum} />
       )}
     </TreeItem>
   );
 };
 
-const ItemContent = ({ data, ofEnum, handleToggle }) => {
+const ItemContent = ({ data, ofEnum }) => {
   const [, updateItem] = useData();
   return (
     <Fragment>
@@ -134,9 +136,7 @@ const ItemContent = ({ data, ofEnum, handleToggle }) => {
       {!!data.type && (
         <ItemInput data={data} ofEnum={ofEnum} updateItem={updateItem} />
       )}
-      {!!data.options && (
-        <List data={data} updateItem={updateItem} handleToggle={handleToggle} />
-      )}
+      {!!data.options && <OptionsList data={data} updateItem={updateItem} />}
     </Fragment>
   );
 };
@@ -147,9 +147,9 @@ const ItemLabel = ({ data, ofEnum }) => {
       label={
         <Typography sx={{ display: "flex", gap: 1 }}>
           {data.name}{" "}
-          <Typography color={data.required ? "error.main" : "text.main"}>
+          <span style={{ color: data.required ? "error.main" : "text.main" }}>
             {data.required ? "*" : ""}
-          </Typography>
+          </span>
         </Typography>
       }
       control={

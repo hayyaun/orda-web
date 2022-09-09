@@ -29,8 +29,10 @@ const DiseaseItem = ({ data }) => {
   return (
     <Fragment>
       <ListItem sx={{ justifyContent: "space-between" }}>
-        <ListItemText sx={{ flex: 1 }}>{data.name}</ListItemText>
-        <ListItemText sx={{ flex: 0 }}>{data.score}</ListItemText>
+        <ListItemText>{data.name}</ListItemText>
+        <ListItemText sx={{ textAlign: "end" }}>
+          {Math.round(data.score * 100) / 100}
+        </ListItemText>
       </ListItem>
       <Divider />
     </Fragment>

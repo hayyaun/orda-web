@@ -16,10 +16,25 @@ export function useData() {
             item.options.includes(id) ||
             item.options.find((option) => option.id === id)
         );
+
         if (item) {
           item.options.forEach((option) => {
-            // if option is of an enum parent
+            // if option is of an enum parent -> reset
             if (ofEnum) {
+              // if parent -> clear children values
+              if (!!option.type === "enum") {
+                let optionRef = arr.find((i) => i.id === option.id);
+                const optionInitial = rawData.find((i) => i.id === option.id);
+                optionRef.options = optionInitial.options;
+                optionRef.options.forEach((o) => {
+                  // recursion
+                  if (typeof o === "string") {
+                    updateItem(o, null, optionRef.type === "enum");
+                  } else o.value = null;
+                });
+                console.log("reset options", optionRef, optionInitial);
+              }
+              // clear value
               if (typeof option === "string") {
                 let optionRef = arr.find((i) => i.id === option);
                 optionRef.value = null;
@@ -27,6 +42,7 @@ export function useData() {
             }
 
             // if not from enum parent
+            // TODO if(value === false) clear all children
             if (typeof option === "string" && option === id) {
               let optionRef = arr.find((i) => i.id === option);
               optionRef.value = value;
