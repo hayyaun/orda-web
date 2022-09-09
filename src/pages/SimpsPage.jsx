@@ -189,7 +189,7 @@ const ItemInput = ({ data, ofEnum, updateItem }) => {
             type="text"
             placeholder={data.name}
             value={data.value}
-            onChange={(e) => updateItem(data.id, data.value, ofEnum)}
+            onChange={(e) => updateItem(data.id, e.target.value, ofEnum)}
           />
         ) : data.type === "number" ? (
           <TextField
