@@ -22,9 +22,22 @@ export const dataState = atom({
   effects: [
     ({ onSet }) => {
       onSet((data) => {
-        console.debug("Current data:", data);
+        console.debug("Data:", data);
       });
     },
     localStorageEffect("data"),
+  ],
+});
+
+export const treeState = atom({
+  key: "tree",
+  default: [],
+  effects: [
+    ({ onSet }) => {
+      onSet((data) => {
+        console.debug("Tree:", data);
+      });
+    },
+    localStorageEffect("tree"),
   ],
 });

@@ -111,7 +111,7 @@
     "page": true,
     "options": [
       "pain-0",
-      { "id": "parens-anes", "name": "Parensthesia & anesthesia" },
+      { "id": "paresth-anes", "name": "Paresthesia & anesthesia" },
       { "id": "bleeding-0", "name": "Bleeding" },
       { "id": "loose-teeth", "name": "Loose teeth" },
       { "id": "recent-occulusal", "name": "Recent occulusal problem" },
@@ -397,7 +397,7 @@
     "name": "Effects on surrending",
     "options": [
       "tooth",
-      { "id": "Dura", "name": "Loss of lamina dura" },
+      "lamina-dura",
       "pdl-space",
       "ian-canal",
       "maximillary-sinus",
@@ -409,7 +409,6 @@
   {
     "id": "tooth",
     "name": "Tooth",
-
     "options": [
       { "id": "Dispalce-0", "name": "Displacement" },
       { "id": "Resorp", "name": "Root resorption" },
@@ -417,11 +416,16 @@
     ]
   },
   {
+    "id": "lamina-dura",
+    "name": "Lamina Dura",
+    "options": [{ "id": "Dura", "name": "Loss of lamina dura" }]
+  },
+  {
     "id": "pdl-space",
     "name": "PDL space",
     "type": "enum",
     "options": [
-      { "id": "wide-0", "name": "Redular widening" },
+      { "id": "wide-0", "name": "Regular widening" },
       { "id": "wide-1", "name": "Irregular widening" }
     ]
   },

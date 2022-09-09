@@ -36,5 +36,47 @@
         ]
       }
     ]
+  },
+  {
+    "id": "Radicular cyst",
+    "name": "Radicular cyst",
+    "factors": [
+      { "id": "pat-male", "rate": 0.6 },
+      { "id": "pat-female", "rate": 0.4 },
+      { "id": "Nonvital", "rate": 1.5 },
+      { "id": "slow", "rate": 1 },
+      { "id": "primary", "rate": 1 },
+      { "id": "history-of-surgery", "rate": 1 },
+      { "id": "painless-0", "rate": 0.8 },
+      { "id": "dull-0", "rate": 0.2 },
+      { "id": "swelling", "rate": 0.4 },
+      { "id": "Expand", "rate": 0.4 },
+      { "id": "Destruct-3", "rate": 0.1 },
+      { "id": "pat-age", "ranges": [{ "a": 30, "b": 60, "rate": 0.9 }] },
+      { "id": "Periapical", "rate": 1 },
+      {
+        "id": "ana-location-maxilla",
+        "ranges": [
+          { "a": 9, "b": 12, "rate": 0.68 },
+          { "a": 3, "b": 12, "rate": 0.16 }
+        ]
+      },
+      {
+        "id": "ana-location-mandible",
+        "ranges": [
+          { "a": 9, "b": 12, "rate": 0.48 },
+          { "a": 3, "b": 12, "rate": 0.12 }
+        ]
+      },
+      { "id": "Corticated", "rate": 0.8 },
+      { "id": "Sclerotic", "rate": 0.2 },
+      { "id": "Round-1", "rate": 1 },
+      { "id": "Uniocular", "rate": 0.9 },
+      { "id": "Dystrophic", "rate": 0.2 },
+      { "id": "Dispalce-0", "rate": 0.5 },
+      { "id": "Resorp", "rate": 0.1 },
+      { "id": "Dispalce-1", "rate": 0.3 },
+      { "id": "size", "ranges": [{ "a": 2, "b": 5, "rate": 1 }] }
+    ]
   }
 ]
