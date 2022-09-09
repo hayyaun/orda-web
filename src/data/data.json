@@ -46,11 +46,7 @@
         "name": "Fever and Illness",
         "desc": ""
       },
-      {
-        "id": "dental-prob",
-        "name": "Dental Problem",
-        "desc": ""
-      },
+      "dental-prob",
       {
         "id": "recent-gingival",
         "name": "Recent gingival or periodontal problem",
@@ -72,6 +68,14 @@
         "name": "History of radiotherapy",
         "desc": ""
       }
+    ]
+  },
+  {
+    "id": "dental-prob",
+    "name": "Dental Problem",
+    "options": [
+      { "id": "primary-teeth", "name": "primary teeth" },
+      { "id": "deciduous-teeth", "name": "deciduous teeth" }
     ]
   },
   {
