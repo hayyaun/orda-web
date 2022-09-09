@@ -7,6 +7,7 @@
       {
         "id": "pat-name",
         "name": "Patient Name",
+        "required": true,
         "desc": "",
         "type": "string"
       },
@@ -14,6 +15,7 @@
       {
         "id": "pat-age",
         "name": "Patient Age",
+        "required": true,
         "desc": "",
         "type": "number"
       }
@@ -22,6 +24,7 @@
   {
     "id": "pat-gender",
     "name": "Patient's gender",
+    "required": true,
     "type": "enum",
     "options": [
       {
@@ -171,7 +174,7 @@
     "type": "enum",
     "required": true,
     "options": [
-      { "id": "slow-0", "name": "Slow (Months to years" },
+      { "id": "slow-0", "name": "Slow (Months to years)" },
       { "id": "moderate-0", "name": "Moderate (weeks to about 2months)" },
       { "id": "rapid-0", "name": "Rapid (Hours to days)" }
     ]
@@ -247,6 +250,7 @@
   {
     "id": "shape-1",
     "name": "Shape",
+    "required": true,
     "type": "enum",
     "options": [
       { "id": "Round-1", "name": "Round or Ovoid" },
@@ -257,6 +261,7 @@
   {
     "id": "periphery",
     "name": "Periphery",
+    "required": true,
     "type": "enum",
     "options": ["well-defined", "ill-defined"]
   },
@@ -283,6 +288,7 @@
   {
     "id": "location",
     "name": "Location",
+    "required": true,
     "options": ["ana-location", "side", "relation-tooth", "type"]
   },
   {
@@ -353,6 +359,7 @@
   {
     "id": "int-struct",
     "name": "Internal structure",
+    "required": true,
     "type": "enum",
     "options": [
       "radiolucent",
