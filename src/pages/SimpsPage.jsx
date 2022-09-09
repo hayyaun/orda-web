@@ -30,7 +30,6 @@ export default function SimpsPage() {
         });
       }
     });
-    console.log(expSet);
     return Array.from(expSet);
   }, [allData]);
 
@@ -94,7 +93,7 @@ const OptionsList = ({ data }) => {
   const options = data.options;
   const isEnum = data.type === "enum";
   return options.map((option, i) => (
-    <Item key={i} data={option} ofEnum={isEnum} />
+    <Item key={i} data={option} ofEnum={isEnum && data.id} />
   ));
 };
 
@@ -146,9 +145,9 @@ const ItemLabel = ({ data, ofEnum }) => {
     <FormControlLabel
       label={
         <Typography sx={{ display: "flex", gap: 1 }}>
-          {data.name}{" "}
-          <span style={{ color: data.required ? "error.main" : "text.main" }}>
-            {data.required ? "*" : ""}
+          {data.name}
+          <span style={{ color: data.required ? "orangered" : "inherit" }}>
+            {data.required ? " *" : ""}
           </span>
         </Typography>
       }

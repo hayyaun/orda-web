@@ -1,6 +1,16 @@
 import { atom } from "recoil";
 import data from "../data/data.json";
 
+const loggerEffect =
+  (key) =>
+  ({ onSet }) => {
+    onSet((data) => {
+      console.groupCollapsed(key);
+      console.debug(data);
+      console.groupEnd();
+    });
+  };
+
 const localStorageEffect =
   (key) =>
   ({ setSelf, onSet }) => {
@@ -19,25 +29,11 @@ const localStorageEffect =
 export const dataState = atom({
   key: "data",
   default: data,
-  effects: [
-    ({ onSet }) => {
-      onSet((data) => {
-        console.debug("Data:", data);
-      });
-    },
-    localStorageEffect("data"),
-  ],
+  effects: [loggerEffect("DATA"), localStorageEffect("data")],
 });
 
 export const treeState = atom({
   key: "tree",
   default: [],
-  effects: [
-    ({ onSet }) => {
-      onSet((data) => {
-        console.debug("Tree:", data);
-      });
-    },
-    localStorageEffect("tree"),
-  ],
+  effects: [loggerEffect("TREE"), localStorageEffect("tree")],
 });
