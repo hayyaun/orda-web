@@ -1,0 +1,22 @@
+"filename", "language", "JavaScript", "JavaScript React", "SVG", "JSON", "CSS", "comment", "blank", "total"
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/App.js", "JavaScript", 33, 0, 0, 0, 0, 0, 3, 36
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/App.test.js", "JavaScript", 7, 0, 0, 0, 0, 0, 2, 9
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/data/data.json", "JSON", 0, 0, 0, 493, 0, 0, 4, 497
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/data/disease old.json", "JSON", 0, 0, 0, 40, 0, 0, 1, 41
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/data/disease.json", "JSON", 0, 0, 0, 82, 0, 0, 1, 83
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/hooks/data.js", "JavaScript", 38, 0, 0, 0, 0, 2, 7, 47
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/hooks/disease.js", "JavaScript", 65, 0, 0, 0, 0, 2, 8, 75
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/hooks/pages.js", "JavaScript", 34, 0, 0, 0, 0, 0, 6, 40
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/index.css", "CSS", 0, 0, 0, 0, 25, 0, 4, 29
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/index.js", "JavaScript", 24, 0, 0, 0, 0, 0, 4, 28
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/logo.svg", "SVG", 0, 0, 1, 0, 0, 0, 0, 1
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/pages/ResultPage.jsx", "JavaScript React", 0, 36, 0, 0, 0, 0, 3, 39
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/pages/SimpsPage.jsx", "JavaScript React", 0, 210, 0, 0, 0, 2, 12, 224
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/pwa/reportWebVitals.js", "JavaScript", 12, 0, 0, 0, 0, 0, 2, 14
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/pwa/serviceWorkerRegistration.js", "JavaScript", 94, 0, 0, 0, 0, 31, 13, 138
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/pwa/setupTests.js", "JavaScript", 1, 0, 0, 0, 0, 4, 1, 6
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/recoil/atoms.js", "JavaScript", 39, 0, 0, 0, 0, 0, 5, 44
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/service-worker.js", "JavaScript", 38, 0, 0, 0, 0, 24, 12, 74
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/setupTests.js", "JavaScript", 1, 0, 0, 0, 0, 4, 1, 6
+"/mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/views/MainView.jsx", "JavaScript React", 0, 83, 0, 0, 0, 0, 4, 87
+"Total", "-", 386, 329, 1, 615, 25, 69, 93, 1518

@@ -1,0 +1,54 @@
+Date : 2022-09-09 19:02:59
+Directory : /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src
+Total : 20 files,  1356 codes, 69 comments, 93 blanks, all 1518 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| JSON             |          3 |        615 |          0 |          6 |        621 |
+| JavaScript       |         12 |        386 |         67 |         64 |        517 |
+| JavaScript React |          3 |        329 |          2 |         19 |        350 |
+| CSS              |          1 |         25 |          0 |          4 |         29 |
+| SVG              |          1 |          1 |          0 |          0 |          1 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                          | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                             |         20 |      1,356 |         69 |         93 |      1,518 |
+| data                                                                                          |          3 |        615 |          0 |          6 |        621 |
+| hooks                                                                                         |          3 |        137 |          4 |         21 |        162 |
+| pages                                                                                         |          2 |        246 |          2 |         15 |        263 |
+| pwa                                                                                           |          3 |        107 |         35 |         16 |        158 |
+| recoil                                                                                        |          1 |         39 |          0 |          5 |         44 |
+| views                                                                                         |          1 |         83 |          0 |          4 |         87 |
++-----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                                      | language         | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/App.js                           | JavaScript       |         33 |          0 |          3 |         36 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/App.test.js                      | JavaScript       |          7 |          0 |          2 |          9 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/data/data.json                   | JSON             |        493 |          0 |          4 |        497 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/data/disease old.json            | JSON             |         40 |          0 |          1 |         41 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/data/disease.json                | JSON             |         82 |          0 |          1 |         83 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/hooks/data.js                    | JavaScript       |         38 |          2 |          7 |         47 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/hooks/disease.js                 | JavaScript       |         65 |          2 |          8 |         75 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/hooks/pages.js                   | JavaScript       |         34 |          0 |          6 |         40 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/index.css                        | CSS              |         25 |          0 |          4 |         29 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/index.js                         | JavaScript       |         24 |          0 |          4 |         28 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/logo.svg                         | SVG              |          1 |          0 |          0 |          1 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/pages/ResultPage.jsx             | JavaScript React |         36 |          0 |          3 |         39 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/pages/SimpsPage.jsx              | JavaScript React |        210 |          2 |         12 |        224 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/pwa/reportWebVitals.js           | JavaScript       |         12 |          0 |          2 |         14 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/pwa/serviceWorkerRegistration.js | JavaScript       |         94 |         31 |         13 |        138 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/pwa/setupTests.js                | JavaScript       |          1 |          4 |          1 |          6 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/recoil/atoms.js                  | JavaScript       |         39 |          0 |          5 |         44 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/service-worker.js                | JavaScript       |         38 |         24 |         12 |         74 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/setupTests.js                    | JavaScript       |          1 |          4 |          1 |          6 |
+| /mnt/Main/Documents/Projects/organizations/ORDA/orda-web/src/views/MainView.jsx               | JavaScript React |         83 |          0 |          4 |         87 |
+| Total                                                                                         |                  |      1,356 |         69 |         93 |      1,518 |
++-----------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

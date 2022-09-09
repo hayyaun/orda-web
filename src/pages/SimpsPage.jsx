@@ -22,7 +22,6 @@ export default function SimpsPage() {
   const [, , resetData] = useData();
   const [expanded, setExpanded] = useRecoilState(treeState);
   // TODO retrieve expanded items from data filled
-
   const handleToggle = (id) => {
     setExpanded((s) => {
       let arr = Array.from(s);
@@ -36,6 +35,7 @@ export default function SimpsPage() {
     resetData();
     setExpanded([]);
   };
+
   return (
     <Stack gap={4} flex={1} overflow="scroll">
       <Stack
@@ -46,9 +46,14 @@ export default function SimpsPage() {
         pl={4}
       >
         {data && (
-          <Typography variant="h5" fontWeight={700}>
-            {data.name}
-          </Typography>
+          <Stack>
+            <Typography variant="h5" fontWeight={700}>
+              {data.name}
+            </Typography>
+            <Typography variant="subtitle2" fontWeight={500} color="#444">
+              {data.desc}
+            </Typography>
+          </Stack>
         )}
         <Button
           variant="outlined"
@@ -139,7 +144,14 @@ const ItemContent = ({ data, ofEnum, handleToggle }) => {
 const ItemLabel = ({ data, ofEnum }) => {
   return (
     <FormControlLabel
-      label={data.name}
+      label={
+        <Typography sx={{ display: "flex", gap: 1 }}>
+          {data.name}{" "}
+          <Typography color={data.required ? "error.main" : "text.main"}>
+            {data.required ? "*" : ""}
+          </Typography>
+        </Typography>
+      }
       control={
         ofEnum ? (
           <Radio size="small" checked={!!data.value} onChange={() => {}} />

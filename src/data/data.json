@@ -169,14 +169,15 @@
     "page": true,
     "type": "enum",
     "options": [
-      { "id": "slow-0", "name": "Slow(Monnths to years" },
-      { "id": "moderate-0", "name": "Moderate(weeks to about 2months)" },
-      { "id": "rapid-0", "name": "Rapid(Hours to days" }
+      { "id": "slow-0", "name": "Slow (Months to years" },
+      { "id": "moderate-0", "name": "Moderate (weeks to about 2months)" },
+      { "id": "rapid-0", "name": "Rapid (Hours to days)" }
     ]
   },
   {
     "id": "clinical-exam",
     "name": "Clinical examination",
+    "desc": "Observable findings",
     "page": true,
     "options": [
       "border-0",
@@ -350,6 +351,8 @@
   {
     "id": "int-struct",
     "name": "Internal structure",
+    "type": "enum",
+    "required": true,
     "options": [
       "radiolucent",
       "mixed",
