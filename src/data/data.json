@@ -10,14 +10,16 @@
     "name": "Patient Name",
     "required": true,
     "desc": "",
-    "type": "string"
+    "type": "string",
+    "open": true
   },
   {
     "id": "pat-age",
     "name": "Patient Age",
     "required": true,
     "desc": "",
-    "type": "number"
+    "type": "number",
+    "open": true
   },
   {
     "id": "pat-gender",
