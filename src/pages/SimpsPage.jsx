@@ -12,22 +12,25 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useMemo } from "react";
 import { useData } from "../hooks/data";
 import { usePageIndex } from "../hooks/pages";
-import delay from "delay";
+import { useExpanded } from "../hooks/tree";
+
+const expCond = (x) => x.value || x.open;
 
 export default function SimpsPage() {
   const { currPage: data } = usePageIndex();
   const [allData, , resetData] = useData();
+  const [expanded] = useExpanded();
 
   const valued = useMemo(() => {
     const expSet = new Set();
     allData.forEach((i) => {
-      if (i.value) expSet.add(i.id);
+      if (expCond(i)) expSet.add(i.id);
       if (Array.isArray(i.options)) {
         i.options.forEach((o) => {
-          if (o.value) expSet.add(o.id);
+          if (expCond(o)) expSet.add(o.id);
         });
       }
     });
@@ -77,7 +80,7 @@ export default function SimpsPage() {
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
-          expanded={valued}
+          expanded={[...valued, ...expanded]}
           selected={[]}
           onNodeSelect={() => {}}
           onNodeToggle={() => {}}
@@ -110,6 +113,7 @@ const OptionsList = ({ data, ofEnum }) => {
 };
 
 const Item = ({ data: option, ofEnum }) => {
+  const [, toggleItem] = useExpanded();
   const [allData, updateItem] = useData();
   const data = useMemo(
     () => allData.find((i) => i.id === option),
@@ -125,9 +129,13 @@ const Item = ({ data: option, ofEnum }) => {
       const prevArr = updateItem(ofEnum, data.id, ofEnum);
       if (!data.type || data.type === "enum") {
         updateItem(data.id, !data.value, ofEnum, prevArr);
+      } else {
+        toggleItem(data.id);
       }
     } else if (!data.type || data.type === "enum") {
       updateItem(data.id, !data.value, ofEnum);
+    } else {
+      toggleItem(data.id);
     }
   };
 

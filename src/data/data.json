@@ -24,7 +24,8 @@
     "name": "Patient's gender",
     "required": true,
     "type": "enum",
-    "options": ["pat-male", "pat-female"]
+    "options": ["pat-male", "pat-female"],
+    "open": true
   },
   { "id": "pat-male", "name": "Male", "desc": "" },
   { "id": "pat-female", "name": "Female", "desc": "" },
