@@ -128,13 +128,17 @@ const Item = ({ data: option, ofEnum }) => {
       console.log("of enum");
       const prevArr = updateItem(ofEnum, data.id, ofEnum);
       if (!data.type || data.type === "enum") {
+        // for radio or checkbox
         updateItem(data.id, !data.value, ofEnum, prevArr);
       } else {
+        // for inputs
         toggleItem(data.id);
       }
     } else if (!data.type || data.type === "enum") {
+      // for radio or checkbox
       updateItem(data.id, !data.value, ofEnum);
     } else {
+      // for inputs
       toggleItem(data.id);
     }
   };
