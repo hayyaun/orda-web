@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import diseases from "../data/disease.json";
+import { useRecoilValue } from "recoil";
+import { diseaseState } from "../recoil/atoms";
 import { useData } from "./data";
 
 const decideOption = (o, f, resolve) => {
@@ -55,7 +56,7 @@ const getFScores = async (d, data) => {
   return result;
 };
 
-const updateScores = async (set, data) => {
+const updateScores = async (set, data, diseases) => {
   set([]);
   const _scores = await Promise.all(diseases.map((d) => getFScores(d, data)));
   set(_scores);
@@ -64,11 +65,12 @@ const updateScores = async (set, data) => {
 export function useScores() {
   const [data] = useData();
   const [scores, set] = useState([]);
+  const diseases = useRecoilValue(diseaseState);
 
   useEffect(() => {
-    updateScores(set, data);
+    updateScores(set, data, diseases);
     return () => set([]);
-  }, [data]);
+  }, [data, diseases]);
 
   return scores;
 }

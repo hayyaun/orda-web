@@ -1,5 +1,6 @@
 import { atom } from "recoil";
 import data from "../data/data.json";
+import diseases from "../data/disease.json";
 
 const loggerEffect =
   (key) =>
@@ -36,4 +37,10 @@ export const treeState = atom({
   key: "tree",
   default: [],
   effects: [loggerEffect("TREE"), localStorageEffect("tree")],
+});
+
+export const diseaseState = atom({
+  key: "disease",
+  default: diseases,
+  effects: [loggerEffect("DISEASE"), localStorageEffect("disease")],
 });
