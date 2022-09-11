@@ -21,6 +21,12 @@ export default function MainView({ children }) {
       gap={2}
       justifyContent="space-between"
       alignItems="stretch"
+      sx={{
+        height: [
+          "calc(var(--vh, 1vh) * 100)",
+          "100vh", // Fallback for browsers that do not support Custom Properties
+        ],
+      }}
     >
       {children}
 

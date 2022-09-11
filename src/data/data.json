@@ -67,8 +67,8 @@
     "name": "Dental Problem",
     "options": ["primary-teeth", "deciduous-teeth"]
   },
-  { "id": "primary-teeth", "name": "primary teeth" },
-  { "id": "deciduous-teeth", "name": "deciduous teeth" },
+  { "id": "primary-teeth", "name": "Primary teeth" },
+  { "id": "permanent-teeth", "name": "Permanent teeth" },
   {
     "id": "sys-dis",
     "name": "System disease, metabolic disease and syndromes",
@@ -108,7 +108,6 @@
     "id": "pain-0",
     "name": "Pain",
     "type": "enum",
-    "required": true,
     "options": ["localized-0", "generalized-0"]
   },
   { "id": "generalized-0", "name": "Generalized (full body)" },
@@ -116,9 +115,8 @@
     "id": "localized-0",
     "name": "Localized",
     "type": "enum",
-    "options": ["painless-0", "tender", "painful"]
+    "options": ["tender", "painful"]
   },
-  { "id": "painless-0", "name": "Painless" },
   { "id": "tender", "name": "Tender" },
   {
     "id": "painful",
@@ -206,13 +204,13 @@
   {
     "id": "shape-size",
     "name": "Shape and size",
-    "options": ["size", "shape-1"]
+    "options": ["size", "shape-1"],
+    "required": true
   },
   { "id": "size", "name": "Size", "type": "number" },
   {
     "id": "shape-1",
     "name": "Shape",
-    "required": true,
     "type": "enum",
     "options": ["Round-1", "Scalloped", "Irregular-2"]
   },

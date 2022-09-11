@@ -23,6 +23,7 @@ h6 {
 
 #root {
   width: 100vw;
-  height: 100vh;
   display: flex;
+  height: max-content;
+  overflow-y: hidden;
 }

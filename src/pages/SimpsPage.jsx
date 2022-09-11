@@ -12,7 +12,14 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Fragment, useMemo } from "react";
+import {
+  Fragment,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useData } from "../hooks/data";
 import { usePageIndex } from "../hooks/pages";
 import { useExpanded } from "../hooks/tree";
@@ -206,52 +213,74 @@ const ItemDesc = ({ data }) => {
   );
 };
 
-const ItemInput = ({ data, ofEnum }) => {
+const ItemInput = memo(({ data, ofEnum }) => {
   const [, updateItem] = useData();
+  const [params, set] = useState([data.id, data.value, ofEnum]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (
+        JSON.stringify(params) !== JSON.stringify([data.id, data.value, ofEnum])
+      )
+        updateItem(...params);
+    }, 1000);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [data.id, data.value, ofEnum, params, updateItem]);
+
+  const updateItemLater = useCallback((...params) => {
+    set(params);
+  }, []);
+
   return (
     data.type &&
     data.type !== "enum" && (
       <Stack p={2}>
         {data.type === "string" ? (
           <TextField
+            key={data.id + "-textfield"}
             size="small"
             type="text"
             placeholder={data.name}
-            value={data.value}
-            onChange={(e) => updateItem(data.id, e.target.value, ofEnum)}
+            value={params[1]}
+            onChange={(e) => updateItemLater(data.id, e.target.value, ofEnum)}
           />
         ) : data.type === "number" ? (
           <TextField
+            key={data.id + "-textfield"}
             size="small"
             type="number"
             placeholder={data.name}
-            value={data.value}
-            onChange={(e) => updateItem(data.id, e.target.value, ofEnum)}
+            value={params[1]}
+            onChange={(e) => updateItemLater(data.id, e.target.value, ofEnum)}
           />
         ) : data.type === "range" ? (
           <Stack direction="row" gap={1}>
             <TextField
+              key={data.id + "-textfield"}
               size="small"
               type="number"
               placeholder="Start"
-              value={data.value?.a}
+              value={params[1]?.a}
               onChange={(e) =>
-                updateItem(
+                updateItemLater(
                   data.id,
-                  { a: e.target.value, b: data.value?.b },
+                  { a: e.target.value, b: params[1]?.b },
                   ofEnum
                 )
               }
             />
             <TextField
+              key={data.id + "-textfield"}
               size="small"
               type="number"
               placeholder="End"
-              value={data.value?.b}
+              value={params[1]?.b}
               onChange={(e) =>
-                updateItem(
+                updateItemLater(
                   data.id,
-                  { a: data.value?.a, b: e.target.value },
+                  { a: params[1]?.a, b: e.target.value },
                   ofEnum
                 )
               }
@@ -261,4 +290,4 @@ const ItemInput = ({ data, ofEnum }) => {
       </Stack>
     )
   );
-};
+});
