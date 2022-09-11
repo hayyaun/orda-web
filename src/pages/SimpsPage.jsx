@@ -18,6 +18,7 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { useData } from "../hooks/data";
@@ -213,9 +214,14 @@ const ItemDesc = ({ data }) => {
   );
 };
 
+let focusId;
 const ItemInput = memo(({ data, ofEnum }) => {
   const [, updateItem] = useData();
   const [params, set] = useState([data.id, data.value, ofEnum]);
+
+  useEffect(() => {
+    document.getElementById(focusId)?.focus();
+  }, [data]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -231,6 +237,7 @@ const ItemInput = memo(({ data, ofEnum }) => {
 
   const updateItemLater = useCallback((...params) => {
     set(params);
+    focusId = params[0] + "-textfield";
   }, []);
 
   return (
@@ -240,6 +247,7 @@ const ItemInput = memo(({ data, ofEnum }) => {
         {data.type === "string" ? (
           <TextField
             key={data.id + "-textfield"}
+            id={data.id + "-textfield"}
             size="small"
             type="text"
             placeholder={data.name}
@@ -249,6 +257,7 @@ const ItemInput = memo(({ data, ofEnum }) => {
         ) : data.type === "number" ? (
           <TextField
             key={data.id + "-textfield"}
+            id={data.id + "-textfield"}
             size="small"
             type="number"
             placeholder={data.name}
@@ -259,6 +268,7 @@ const ItemInput = memo(({ data, ofEnum }) => {
           <Stack direction="row" gap={1}>
             <TextField
               key={data.id + "-textfield"}
+              id={data.id + "-textfield"}
               size="small"
               type="number"
               placeholder="Start"
@@ -273,6 +283,7 @@ const ItemInput = memo(({ data, ofEnum }) => {
             />
             <TextField
               key={data.id + "-textfield"}
+              id={data.id + "-textfield"}
               size="small"
               type="number"
               placeholder="End"
