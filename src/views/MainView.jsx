@@ -14,6 +14,8 @@ export default function MainView({ children }) {
     handleResult,
   } = usePageIndex();
 
+  // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+  let vh = window.innerHeight;
   return (
     <Stack
       overflow="hidden"
@@ -21,12 +23,7 @@ export default function MainView({ children }) {
       gap={2}
       justifyContent="space-between"
       alignItems="stretch"
-      sx={{
-        height: [
-          "calc(var(--vh, 1vh) * 100)",
-          "100vh", // Fallback for browsers that do not support Custom Properties
-        ],
-      }}
+      sx={{ height: [vh, "100vh"] }}
     >
       {children}
 
