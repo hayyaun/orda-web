@@ -65,7 +65,7 @@
   {
     "id": "dental-prob",
     "name": "Dental Problem",
-    "options": ["primary-teeth", "deciduous-teeth"]
+    "options": ["primary-teeth", "permanent-teeth"]
   },
   { "id": "primary-teeth", "name": "Primary teeth" },
   { "id": "permanent-teeth", "name": "Permanent teeth" },
